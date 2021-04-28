@@ -1,0 +1,22 @@
+# Compiled output
+/*.d.ts
+/*.js
+!.eslintrc.js
+!babel.config.js
+!cli.js
+
+# Yarn package manager
+# https://yarnpkg.com/getting-started/qa/#which-files-should-be-gitignored
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# Testing
+/env
+
+# Misc
+.DS_Store
