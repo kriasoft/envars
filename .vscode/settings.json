@@ -19,6 +19,7 @@
   },
   "search.exclude": {
     "**/.yarn": true,
+    "**/lib": true,
     "**/.pnp.*": true
   },
   "eslint.nodePath": ".yarn/sdks",

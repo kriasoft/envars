@@ -9,7 +9,7 @@
 <img src="https://raw.githubusercontent.com/motdotla/dotenv/master/dotenv.png" alt="dotenv" align="right" />
 
 **Envars** is a Node.js module based on [`dotenv`](https://github.com/motdotla/dotenv)
-that loads and decrypts environment variables from `.env.*` files into
+that loads and decrypts environment variables from `.{envName}.env` files into
 [`process.env`](https://nodejs.org/docs/latest/api/process.html#process_process_env).
 
 It allows to store application secrets in `.env.*` files encrypted making these
@@ -29,10 +29,10 @@ $ yarn add envars --dev
 
 Suppose you have `local` (local development), `test` (test/QA), and `prod`
 (production) application environments. For each of these environments you would
-create a separate `.env.{envName}` file in your project. For example:
+create a separate `.{envName}.env` file in your project. For example:
 
 ```bash
-# .env.local
+# .local.env
 APP_ORIGIN=http://localhost:8080
 PGHOST=127.0.0.1
 PGDATABASE=example_local
@@ -41,7 +41,7 @@ PGPASSWORD=
 ```
 
 ```bash
-# .env.test
+# .test.env
 APP_ORIGIN=http://test.example.com
 PGHOST=34.72.79.184
 PGDATABASE=example_test
@@ -50,15 +50,18 @@ PGPASSWORD=enc::mxJIZ9/1uV/NDgwT:Seheo3XvJlbllbLg:M5kwPZ3XYK14rbUctbxN/3z18Q==
 ```
 
 ```bash
-# .env.prod
+# .prod.env
 APP_ORIGIN=http://example.com
 PGHOST=34.72.79.1
 PGDATABASE=example
 PGUSER=postgres
 PGPASSWORD=enc::oiF6UkepsP2l41Mt:Et1jQuh7Vw3X4UpA:Qv3Lhr45ZPA0jga5QKeg917UDg==
+
+# .gitignore
+*.override.env
 ```
 
-While the `.env.local` file, that is used during local development, will
+While the `.local.env` file, that is used during local development, will
 contain all the configuration settings in plain text, the other two may have
 some secret values such as live database password, JWT secret, etc. Since these
 values will be encrypted, it would be totally OK to commit these files into the
@@ -67,10 +70,10 @@ source control repository without compromising security.
 You can update and read secrets by using the `envars` CLI:
 
 ```bash
-# Encrypt and save `PGPASSWORD` variable into the `.env.prod` file
+# Encrypt and save `PGPASSWORD` variable into the `.prod.env` file
 $ yarn envars set PGPASSWORD "S^6wh:rruq!MS(Xd" --env=prod --secret
 
-# Read and decrypt `PGPASSWORD` variable from the `.env.prod` file
+# Read and decrypt `PGPASSWORD` variable from the `.prod.env` file
 $ yarn envars get PGPASSWORD --env=prod
 ```
 
@@ -103,10 +106,11 @@ config({ env: "prod" });
 #### ❓ In which order the `.env` files are being loaded?
 
 ```
-1) .env.{envName}.override
-2) .env.{envName}
-3) .env.override
-4) .env
+1) .{envName}.override.env
+2) .{envName}.env
+3) .common.override.env
+4) .common.env
+5) .env
 ```
 
 Where `{envName}` is the name of the target environment (defaults to `local`).
@@ -117,17 +121,16 @@ By reading the value of `process.env.APP_ENV`.
 
 #### ❓ Which files needs be included into the source control?
 
-As long as you store secrets encrypted it is safe to commit all the `.env.*`
-files into the source control repository except for the `.env.*.override` and
-`.env.override` files.
+As long as you store secrets encrypted it is safe to commit all the `.*.env`
+files into the source control repository except for the `.*.override.env` files.
 
-#### ❓ What's the purpose of `.env.*.override` files?
+#### ❓ What's the purpose of `.*.override.env` files?
 
 Sometimes it's required for a developer being able to override some of the
 configuration settings without pushing these changes to the upstream repository.
 These files also used to store encryption/decryption master password.
 
-#### ❓ How to customize where it looks for `.env.*` files?
+#### ❓ How to customize where it looks for `.*.env` files?
 
 You can customize it by adding `envars` settings to `package.json`:
 
@@ -149,8 +152,9 @@ You can customize it by adding `envars` settings to `package.json`:
 
 ## Related Projects
 
-- [GraphQL API Starter Kit](https://github.com/kriasoft/graphql-starter) — monorepo template, pre-configured with TypeScript, GraphQL.js, React, and Relay
-- [Node.js API Starter Kit](https://github.com/kriasoft/node-starter-kit) — Node.js project template (PostgreSQL, Knex, OAuth 2.0, emails, Cloud Functions)
+- [React Starter Kit](https://github.com/kriasoft/react-starter-kit) — front-end boilerplate (TypeScript, React, Material UI, Webpack 5)
+- [GraphQL API and Relay Starter Kit](https://github.com/kriasoft/relay-starter-kit) — monorepo boilerplate (TypeScript, GraphQL.js, React, and Relay)
+- [Node.js API Starter Kit](https://github.com/kriasoft/node-starter-kit) — Node.js boilerplate (TypeScript, Knex, GraphQL, Cloud SQL, Cloud Functions)
 
 ## How to Contribute
 

@@ -11,10 +11,10 @@ const cli = meow(
   `
   ${dim("Usage:")}
     ${bold("$ envars get")} <name> [--env #0]
-    ${dim("  Reads environment variable from .env[.<env>] file.")}
+    ${dim("  Reads environment variable from .<env>.env file.")}
 
     ${bold("$ envars set")} <name> <value> [--env #0] [--secret, -s]
-    ${dim("  Writes environment variable to .env or .env.<env> file.")}
+    ${dim("  Writes environment variable to .<env>.env file.")}
 
   ${dim("Options:")}
     ${bold("--env")} <name>  ${dim(

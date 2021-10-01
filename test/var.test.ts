@@ -10,32 +10,32 @@ import { set } from "../src/var";
 
 beforeAll(async function () {
   await Promise.all([
-    await del(["./env/.env.temp", "./env/.env.temp.*"]),
+    await del(["./env/.temp.env", "./env/.temp.override.env"]),
     await makeDir("./env"),
   ]);
 });
 
 afterAll(async function () {
-  await del(["./env/.env.temp", "./env/.env.temp.*"]);
+  await del(["./env/.temp.env", "./env/.temp.override.env"]);
 });
 
 test("set()", async function () {
-  const env = "temp";
+  const envName = "temp";
   const cwd = "./env";
   const override = `ENVARS_PASSWORD=pass\n`;
 
-  writeFileSync(`${cwd}/.env.${env}`, "\n", "utf-8");
-  writeFileSync(`${cwd}/.env.${env}.override`, override, "utf-8");
+  writeFileSync(`${cwd}/.${envName}.env`, "\n", "utf-8");
+  writeFileSync(`${cwd}/.${envName}.override.env`, override, "utf-8");
 
-  let result = dotenv.config({ path: `${cwd}/.env.${env}` });
+  let result = dotenv.config({ path: `${cwd}/.${envName}.env` });
   expect(result.error).toBeUndefined();
   expect(result.parsed.PLAIN_VAR).toBeUndefined();
   expect(result.parsed.SECRET_VAR).toBeUndefined();
 
-  await set("PLAIN_VAR", "123", { cwd, env });
-  await set("SECRET_VAR", "123", { cwd, env, secret: true });
+  await set("PLAIN_VAR", "123", { cwd, env: envName });
+  await set("SECRET_VAR", "123", { cwd, env: envName, secret: true });
 
-  result = dotenv.config({ path: `${cwd}/.env.${env}` });
+  result = dotenv.config({ path: `${cwd}/.${envName}.env` });
   expect(result.error).toBeUndefined();
   expect(result.parsed.PLAIN_VAR).toBe("123");
   expect(result.parsed.SECRET_VAR).toBeTruthy();

@@ -1,6 +1,6 @@
 {
   "name": "envars",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Securely store and load environment variables to/from .env files.",
   "keywords": [
     ".env",
@@ -30,7 +30,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib"
+    "lib",
+    "config.js"
   ],
   "scripts": {
     "lint": "eslint --report-unused-disable-directives .",

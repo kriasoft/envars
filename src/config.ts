@@ -41,9 +41,10 @@ export function config(options: Options = {}): Record<string, string> {
   env.APP_ENV = options.env ?? env.APP_ENV ?? settings.default;
 
   const output = [
-    dotenv.config({ path: getPath(`.env.${env.APP_ENV}.override`), ...opts }),
-    dotenv.config({ path: getPath(`.env.${env.APP_ENV}`), ...opts }),
-    dotenv.config({ path: getPath(`.env.override`), ...opts }),
+    dotenv.config({ path: getPath(`.${env.APP_ENV}.override.env`), ...opts }),
+    dotenv.config({ path: getPath(`.${env.APP_ENV}.env`), ...opts }),
+    dotenv.config({ path: getPath(`.common.override.env`), ...opts }),
+    dotenv.config({ path: getPath(`.common.env`), ...opts }),
     dotenv.config({ path: getPath(`.env`), ...opts }),
   ];
 
@@ -79,5 +80,3 @@ export function config(options: Options = {}): Record<string, string> {
     {} as Record<string, string>
   );
 }
-
-if (!require.main) config();

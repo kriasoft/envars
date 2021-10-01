@@ -13,12 +13,12 @@ import { findPassword, readLines, writeLines } from "./utils";
 
 export type Options = {
   /**
-   * The source directory containing .env.* files.
+   * The source directory containing .*.env files.
    */
   cwd: string;
 
   /**
-   * The environment name such as "local", "dev", "test", "prod", etc.
+   * The environment name such as "local", "test", "prod", etc.
    */
   env: string;
 
@@ -28,13 +28,13 @@ export type Options = {
   secret?: boolean;
 
   /**
-   * Text encoding of the .env.* files.
+   * Text encoding of the .*.env files.
    */
   encoding?: BufferEncoding;
 };
 
 /**
- * Writes environment variable to the .env.{envName} file.
+ * Writes environment variable to the .{envName}.env file.
  */
 export async function set(
   name: string,
@@ -44,14 +44,15 @@ export async function set(
   const cwd = options.cwd || settings.cwd;
   const envName = options.env || settings.default;
   const encoding = options.encoding || settings.encoding;
-  const filename = path.join(cwd, `.env.${envName}`);
+  const filename = path.join(cwd, `.${envName}.env`);
+  const overrideFilename = path.join(cwd, `.${envName}.override.env`);
 
   // Ensure that that target directory exists.
   await makeDir(cwd);
 
   if (options.secret) {
     // Attempt to load the encryption password.
-    let c = dotenv.config({ path: `${filename}.override` });
+    let c = dotenv.config({ path: overrideFilename });
     let password = c.parsed?.ENVARS_PASSWORD ?? process.env.ENVARS_PASSWORD;
 
     if (!password) {
@@ -72,7 +73,7 @@ export async function set(
 
       prl.close();
 
-      const lines = await readLines(`${filename}.override`, encoding);
+      const lines = await readLines(overrideFilename, encoding);
       let append = true;
 
       lines.forEach(function (line, i) {
@@ -94,7 +95,7 @@ export async function set(
         );
       }
 
-      await writeLines(lines, `${filename}.override`, encoding);
+      await writeLines(lines, overrideFilename, encoding);
     }
 
     c = dotenv.config({ path: filename });
@@ -178,13 +179,14 @@ export async function get(
   const cwd = options.cwd || settings.cwd;
   const envName = options.env || settings.default;
   const encoding = options.encoding || settings.encoding;
-  const filename = path.join(cwd, `.env.${envName}`);
+  const filename = path.join(cwd, `.${envName}.env`);
+  const overrideFilename = path.join(cwd, `.${envName}.override.env`);
 
   const config = dotenv.config({ path: filename });
   let value = config.parsed?.[name];
 
   if (value && encRegExp.test(value)) {
-    const password = await findPassword(`${filename}.override`, encoding);
+    const password = await findPassword(overrideFilename, encoding);
     try {
       value = await decrypt(value, password);
     } catch (err) {
