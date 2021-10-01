@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: 2021-present Kriasoft <hello@kriasoft.com> */
 /* SPDX-License-Identifier: MIT */
 
-import { createReadStream, createWriteStream } from "fs";
+import { access, constants, createReadStream, createWriteStream } from "fs";
 import { EOL } from "os";
 import { createInterface } from "readline";
 
@@ -12,6 +12,12 @@ export async function readLines(
   filename: string,
   encoding: BufferEncoding
 ): Promise<string[]> {
+  const exists = await new Promise((resolve) => {
+    access(filename, constants.F_OK, (err) => resolve(!err));
+  });
+
+  if (!exists) return [];
+
   const input = createReadStream(filename, { encoding });
   const rl = createInterface({ input, crlfDelay: Infinity });
   const output: string[] = [];
@@ -25,8 +31,6 @@ export async function readLines(
       input.on("error", reject);
       input.on("close", resolve);
     });
-  } catch (err) {
-    if (err.code !== "ENOENT") throw err;
   } finally {
     input.destroy();
   }

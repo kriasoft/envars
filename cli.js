@@ -4,8 +4,8 @@
 
 const meow = require("meow");
 const { bold, dim, yellow } = require("chalk");
-const { config } = require("./config");
-const { set, get } = require("./var");
+const { config } = require("./lib/config");
+const { set, get } = require("./lib/var");
 
 const cli = meow(
   `

@@ -188,7 +188,10 @@ export async function get(
     try {
       value = await decrypt(value, password);
     } catch (err) {
-      throw new Error(`Failed to decrypt \`${name}\` variable. ${err.message}`);
+      throw new Error(
+        `Failed to decrypt \`${name}\` variable.` +
+          (err instanceof Error ? ` ${err.message}` : ``)
+      );
     }
   }
 

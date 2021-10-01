@@ -16,7 +16,8 @@ const keyMap = new Map<string, Buffer>();
 const authTagLength = 16;
 
 // `enc::{password-salt}:{encrypted-text-salt}:{encrypted-text}`
-const encRegExp = /^enc::([A-Za-z0-9+/=]{16}):([A-Za-z0-9+/=]{16}):([A-Za-z0-9+/=]{16,})$/;
+const encRegExp =
+  /^enc::([A-Za-z0-9+/=]{16}):([A-Za-z0-9+/=]{16}):([A-Za-z0-9+/=]{16,})$/;
 
 const pbkdf2Async = promisify(pbkdf2);
 const generateSalt = promisify(randomBytes).bind(undefined, 12);
@@ -125,10 +126,13 @@ function decryptValue(
       "utf-8"
     );
   } catch (err) {
-    if (err.stack.includes(" Decipheriv.final ")) {
-      throw new Error("Invalid password.");
+    if (err instanceof Error) {
+      if (err.stack?.includes(" Decipheriv.final ")) {
+        throw new Error("Invalid password.");
+      }
+      throw err;
     }
-    throw err;
+    throw new Error();
   }
 }
 
