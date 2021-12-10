@@ -1,6 +1,18 @@
 /* SPDX-FileCopyrightText: 2021-present Kriasoft <hello@kriasoft.com> */
 /* SPDX-License-Identifier: MIT */
 
-if (!require.main) {
-  require("./lib/config").config();
-}
+"use strict";
+
+const meow = require("meow");
+
+const cli = meow({
+  flags: {
+    env: {
+      type: "string",
+    },
+  },
+});
+
+require("./lib/config").config({
+  env: cli.flags.env,
+});

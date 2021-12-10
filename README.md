@@ -89,8 +89,10 @@ $ node -r envars/config ./server.js
 # Load environment variables when launching a Node.js app via Nodemon
 $ nodemon -r envars/config ./server.js
 
-# Load environment variables for "prod" environment instead of "local" (default)
-$ APP_ENV=prod nodemon -r envars/config ./server.js
+# Load environment variables for "test" environment instead of "local" (default)
+$ APP_ENV=test node -r envars/config ./server.js
+# Alternatively by passing [--env #0] flag
+$ node -r envars/config ./server.js --env=test
 ```
 
 Alternatively, you can load environment variables programmatically:

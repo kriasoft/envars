@@ -9,7 +9,7 @@
  */
 module.exports = function config(api) {
   return {
-    presets: [["@babel/preset-env", { targets: { node: "10" } }]],
+    presets: [["@babel/preset-env", { targets: { node: "16" } }]],
 
     plugins: ["@babel/plugin-proposal-class-properties"],
 
