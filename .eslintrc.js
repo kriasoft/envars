@@ -40,5 +40,5 @@ module.exports = {
     },
   ],
 
-  ignorePatterns: ["/.cache", "/.git", "/.yarn"],
+  ignorePatterns: ["/.cache", "/.git", "/.yarn", "/lib"],
 };
