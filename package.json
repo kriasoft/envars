@@ -1,6 +1,6 @@
 {
   "name": "envars",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Securely store and load environment variables to/from .env files.",
   "keywords": [
     ".env",
@@ -46,27 +46,27 @@
   },
   "dependencies": {
     "chalk": "^4.1.2",
-    "dotenv": "^10.0.0",
+    "dotenv": "^16.0.0",
     "make-dir": "^3.1.0",
     "meow": "^9.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.0",
-    "@babel/plugin-proposal-class-properties": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "@babel/preset-typescript": "^7.16.0",
-    "@types/jest": "^27.0.3",
+    "@babel/cli": "^7.17.0",
+    "@babel/core": "^7.17.2",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^27.4.0",
     "@types/lodash": "^4.14.178",
-    "@types/node": "^16.11.12",
-    "@typescript-eslint/eslint-plugin": "^5.6.0",
-    "@typescript-eslint/parser": "^5.6.0",
+    "@types/node": "^16.11.24",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
     "del": "^6.0.0",
-    "eslint": "^8.4.1",
+    "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
-    "jest": "^27.4.4",
+    "jest": "^27.5.1",
     "prettier": "^2.5.1",
-    "typescript": "^4.5.3"
+    "typescript": "^4.5.5"
   },
   "jest": {
     "testEnvironment": "node",
@@ -78,5 +78,5 @@
   "envars": {
     "cwd": "./env"
   },
-  "packageManager": "yarn@3.2.0-rc.7"
+  "packageManager": "yarn@3.2.0-rc.14"
 }
