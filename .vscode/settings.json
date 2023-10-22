@@ -8,27 +8,22 @@
   "files.exclude": {
     ".gitignore": true,
     ".npmignore": true,
-    ".pnp.cjs": true,
+    ".pnp.*": true,
     ".prettierignore": true,
-    ".yarn": true,
-    ".yarnrc.yml": true,
+    "node_modules/**": true,
     "yarn.lock": true
   },
   "files.associations": {
-    ".env.**": "dotenv"
+    ".env.*.local": "properties",
+    ".env.local": "properties"
   },
   "search.exclude": {
     "**/.yarn": true,
     "**/lib": true,
     "**/.pnp.*": true
   },
-  "eslint.nodePath": ".yarn/sdks",
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-  "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "cSpell.words": [
-    "envars",
-    "kriasoft",
-    "pgsslkey"
-  ]
+  "cSpell.words": ["envalid", "envars", "kriasoft", "pgsslkey"],
+  "eslint.nodePath": ".yarn/sdks",
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
 }

@@ -1,18 +1,19 @@
 # Yarn package manager
 # https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
-.pnp.*
 .yarn/*
+!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
 
-# Compiled output
-/lib
-
-# Testing
-/env
+# NPM
+/node_modules
+/package.tgz
 
 # Misc
 .DS_Store
+.env
+.env.*
+env.ts

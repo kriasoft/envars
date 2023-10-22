@@ -5,12 +5,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "pwa-node",
+      "name": "test",
+      "type": "node",
       "request": "launch",
-      "name": "Jest",
+      "skipFiles": ["<node_internals>/**"],
       "runtimeExecutable": "yarn",
-      "runtimeArgs": ["jest"],
-      "skipFiles": ["<node_internals>/**"]
+      "runtimeArgs": ["ava"]
     }
   ]
 }

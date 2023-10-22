@@ -1,0 +1,7 @@
+.vscode/
+.yarn/
+.prettierignore
+test.js
+.env
+.env.*
+env.ts

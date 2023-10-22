@@ -1,5 +1,2 @@
-/.vscode/settings.json
 /.yarn
-/lib
 .pnp.*
-tsconfig.json
