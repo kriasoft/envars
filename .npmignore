@@ -1,7 +1,10 @@
+.github/
 .vscode/
 .yarn/
-.prettierignore
-test.js
 .env
 .env.*
+.pnp.*
+.prettierignore
+.yarnrc.yml
 env.ts
+test.js

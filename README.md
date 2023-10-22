@@ -60,7 +60,7 @@ export default cleanEnv(process.env, {
 ```ts
 import { loadEnv } from "envars";
 
-const env = await loadEnv("production", {
+const [env] = await loadEnv("production", {
   root: ".",
   schema: "./core/env.ts",
   mergeTo: process.env,
@@ -145,7 +145,7 @@ import { defineConfig } from "vite";
 import { loadEnv } from "envars";
 
 export default defineConfig(async ({ mode }) => {
-  const env = await loadEnv(mode, {
+  const [env] = await loadEnv(mode, {
     root: "../",
     schema: "./core/env.ts",
     mergeTo: process.env,

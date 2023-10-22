@@ -25,7 +25,7 @@ const secretRegExp = /^secret:\/\/(\w+)\/(.*)$/;
  *
  * @see https://cloud.google.com/secret-manager
  * @example
- *   const env = await loadEnv("development", {
+ *   const [env, secrets] = await loadEnv("development", {
  *     root: "..",
  *     schema: "./core/env.ts",
  *     mergeTo: process.env,
