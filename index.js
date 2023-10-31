@@ -194,8 +194,6 @@ export async function loadEnv(environment, options) {
         );
         assign(key, value);
       }
-
-      assign(key, value);
     } else {
       assign(key, value);
     }

@@ -5,8 +5,6 @@
 [![Donate](https://img.shields.io/badge/dynamic/json?color=%23ff424d&label=Patreon&style=flat-square&query=data.attributes.patron_count&suffix=%20patrons&url=https%3A%2F%2Fwww.patreon.com%2Fapi%2Fcampaigns%2F233228)](http://patreon.com/koistya)
 [![Discord](https://img.shields.io/discord/643523529131950086?label=Chat&style=flat-square)](https://discord.gg/bSsv7XM)
 
-<img src="https://raw.githubusercontent.com/motdotla/dotenv/master/dotenv.png" alt="dotenv" align="right" />
-
 Loads environment variables for the target environment from `.env` files using [dotenv](https://github.com/motdotla/dotenv); supports cloud secret providers such as [Google Secret Manager](https://cloud.google.com/secret-manager).
 
 By default it attempts to load `.env` files from the current working directory using the following naming convention ([learn more](https://vitejs.dev/guide/env-and-mode.html#env-files)):
