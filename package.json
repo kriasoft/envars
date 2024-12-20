@@ -61,7 +61,7 @@
     "@eslint/js": "^9.17.0",
     "@typescript-eslint/eslint-plugin": "^8.18.1",
     "@typescript-eslint/parser": "^8.18.1",
-    "ava": "^5.3.1",
+    "ava": "^6.2.0",
     "envalid": "^8.0.0",
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
@@ -79,10 +79,12 @@
   },
   "ava": {
     "workerThreads": false,
-    "ignoredByWatcher": [
-      ".env.*",
-      ".env",
-      "env.ts"
-    ]
+    "watchMode": {
+      "ignoreChanges": [
+        ".env.*",
+        ".env",
+        "env.ts"
+      ]
+    }
   }
 }
