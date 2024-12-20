@@ -25,5 +25,6 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": ["envalid", "envars", "kriasoft", "pgsslkey"],
   "eslint.nodePath": ".yarn/sdks",
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs"
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
+  "typescript.tsdk": ".yarn/sdks/typescript/lib"
 }
