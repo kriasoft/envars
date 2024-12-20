@@ -1,6 +1,6 @@
 {
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true
+    "source.organizeImports": "explicit"
   },
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
@@ -25,5 +25,5 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": ["envalid", "envars", "kriasoft", "pgsslkey"],
   "eslint.nodePath": ".yarn/sdks",
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs"
 }
