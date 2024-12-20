@@ -28,7 +28,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@eslint/js", "npm:9.17.0"],\
-          ["@google-cloud/secret-manager", "npm:5.0.1"],\
+          ["@google-cloud/secret-manager", "npm:5.6.0"],\
           ["@typescript-eslint/eslint-plugin", "virtual:6ff9b64bfb553929abd09e679aae51b4a64ea5743484fe2bd0d98679098cb3a6987bcdd875e038869903d6285e56fe262fc623be64f2fb151a3c72a86765e43c#npm:8.18.1"],\
           ["@typescript-eslint/parser", "virtual:6ff9b64bfb553929abd09e679aae51b4a64ea5743484fe2bd0d98679098cb3a6987bcdd875e038869903d6285e56fe262fc623be64f2fb151a3c72a86765e43c#npm:8.18.1"],\
           ["ava", "virtual:6ff9b64bfb553929abd09e679aae51b4a64ea5743484fe2bd0d98679098cb3a6987bcdd875e038869903d6285e56fe262fc623be64f2fb151a3c72a86765e43c#npm:6.2.0"],\
@@ -403,10 +403,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@google-cloud/secret-manager", [\
-      ["npm:5.0.1", {\
-        "packageLocation": "../../.yarn/berry/cache/@google-cloud-secret-manager-npm-5.0.1-16550eb46c-10.zip/node_modules/@google-cloud/secret-manager/",\
+      ["npm:5.6.0", {\
+        "packageLocation": "../../.yarn/berry/cache/@google-cloud-secret-manager-npm-5.6.0-4e24707b2d-10.zip/node_modules/@google-cloud/secret-manager/",\
         "packageDependencies": [\
-          ["@google-cloud/secret-manager", "npm:5.0.1"],\
+          ["@google-cloud/secret-manager", "npm:5.6.0"],\
           ["google-gax", "npm:4.0.5"]\
         ],\
         "linkType": "HARD"\
@@ -1811,7 +1811,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["envars", "workspace:."],\
           ["@eslint/js", "npm:9.17.0"],\
-          ["@google-cloud/secret-manager", "npm:5.0.1"],\
+          ["@google-cloud/secret-manager", "npm:5.6.0"],\
           ["@typescript-eslint/eslint-plugin", "virtual:6ff9b64bfb553929abd09e679aae51b4a64ea5743484fe2bd0d98679098cb3a6987bcdd875e038869903d6285e56fe262fc623be64f2fb151a3c72a86765e43c#npm:8.18.1"],\
           ["@typescript-eslint/parser", "virtual:6ff9b64bfb553929abd09e679aae51b4a64ea5743484fe2bd0d98679098cb3a6987bcdd875e038869903d6285e56fe262fc623be64f2fb151a3c72a86765e43c#npm:8.18.1"],\
           ["ava", "virtual:6ff9b64bfb553929abd09e679aae51b4a64ea5743484fe2bd0d98679098cb3a6987bcdd875e038869903d6285e56fe262fc623be64f2fb151a3c72a86765e43c#npm:6.2.0"],\
