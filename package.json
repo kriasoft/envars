@@ -50,12 +50,12 @@
   },
   "dependencies": {
     "@google-cloud/secret-manager": "^5.6.0",
-    "dotenv": "^16.3.1",
-    "dotenv-expand": "^10.0.0",
-    "esbuild": "^0.19.5",
-    "module-from-string": "^3.3.0",
+    "dotenv": "^16.4.7",
+    "dotenv-expand": "^12.0.1",
+    "esbuild": "^0.24.2",
+    "module-from-string": "^3.3.1",
     "parent-module": "^3.1.0",
-    "read-pkg-up": "^10.1.0"
+    "read-pkg-up": "^11.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
