@@ -11,8 +11,8 @@ export type SecretSource = "google" | "aws" | "azure";
  * @see https://cloud.google.com/secret-manager
  * @example
  *   const [env, secrets] = await loadEnv("development", {
- *     root: "..",
- *     schema: "./core/env.ts",
+ *     root: "./apps/backend",  // relative to process.cwd()
+ *     schema: "./env.ts",      // relative to process.cwd()
  *     mergeTo: process.env,
  *   });
  *
@@ -21,9 +21,9 @@ export type SecretSource = "google" | "aws" | "azure";
  */
 export function loadEnv(
   environment: string | undefined,
-  options: {
+  options?: {
     /**
-     * Where to look for `.env` files. Defaults to the current working directory.
+     * Where to look for `.env` files. Defaults to the current working directory (process.cwd()).
      */
     root?: string;
     /**
@@ -39,7 +39,7 @@ export function loadEnv(
     files?: string[] | string;
     /**
      * Path to the environment schema file exporting environment variables
-     * required by the app at runtime.
+     * required by the app at runtime. The path is resolved relative to process.cwd().
      *
      * @example
      *   // env.ts

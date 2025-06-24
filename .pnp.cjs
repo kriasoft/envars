@@ -40,7 +40,6 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:6ff9b64bfb553929abd09e679aae51b4a64ea5743484fe2bd0d98679098cb3a6987bcdd875e038869903d6285e56fe262fc623be64f2fb151a3c72a86765e43c#npm:9.1.0"],\
           ["globals", "npm:15.14.0"],\
           ["module-from-string", "npm:3.3.1"],\
-          ["parent-module", "npm:3.1.0"],\
           ["prettier", "npm:3.4.2"],\
           ["read-pkg-up", "npm:11.0.0"],\
           ["typescript", "patch:typescript@npm%3A5.7.2#optional!builtin<compat/typescript>::version=5.7.2&hash=5786d5"],\
@@ -1915,7 +1914,6 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:6ff9b64bfb553929abd09e679aae51b4a64ea5743484fe2bd0d98679098cb3a6987bcdd875e038869903d6285e56fe262fc623be64f2fb151a3c72a86765e43c#npm:9.1.0"],\
           ["globals", "npm:15.14.0"],\
           ["module-from-string", "npm:3.3.1"],\
-          ["parent-module", "npm:3.1.0"],\
           ["prettier", "npm:3.4.2"],\
           ["read-pkg-up", "npm:11.0.0"],\
           ["typescript", "patch:typescript@npm%3A5.7.2#optional!builtin<compat/typescript>::version=5.7.2&hash=5786d5"],\
@@ -3302,14 +3300,6 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["parent-module", "npm:1.0.1"],\
           ["callsites", "npm:3.1.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:3.1.0", {\
-        "packageLocation": "../../.yarn/berry/cache/parent-module-npm-3.1.0-7614aa8d13-10.zip/node_modules/parent-module/",\
-        "packageDependencies": [\
-          ["parent-module", "npm:3.1.0"],\
-          ["callsites", "npm:4.2.0"]\
         ],\
         "linkType": "HARD"\
       }]\
