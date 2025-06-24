@@ -7,9 +7,7 @@ import { expand } from "dotenv-expand";
 import { build } from "esbuild";
 import { importFromString } from "module-from-string";
 import { readFile } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-import parentModule from "parent-module";
+import { resolve } from "node:path";
 import { readPackageUp } from "read-pkg-up";
 
 // Matches the following patterns:
@@ -26,8 +24,8 @@ const secretRegExp = /^secret:\/\/(\w+)\/(.*)$/;
  * @see https://cloud.google.com/secret-manager
  * @example
  *   const [env, secrets] = await loadEnv("development", {
- *     root: "..",
- *     schema: "./core/env.ts",
+ *     root: "./apps/backend",  // relative to process.cwd()
+ *     schema: "./env.ts",      // relative to process.cwd()
  *     mergeTo: process.env,
  *   });
  *
@@ -37,7 +35,7 @@ const secretRegExp = /^secret:\/\/(\w+)\/(.*)$/;
  *  files?: string[] | string;
  *  schema?: string;
  *  mergeTo?: Record<string, unknown>;
- * }} options Loading options
+ * }} options Loading options. The `root` defaults to `process.cwd()`, and `schema` is resolved relative to `process.cwd()`.
  * @return {Promise<[env: Record<string, string>, secrets: Map<string, { ref: string; source: "google" | "aws" | "azure" }]>}
  */
 export async function loadEnv(environment, options) {
@@ -59,11 +57,7 @@ export async function loadEnv(environment, options) {
   }
 
   // Load environment variables from the `.env` files
-  const parentFile = parentModule();
-  const parentDir = dirname(
-    parentFile.startsWith("file://") ? fileURLToPath(parentFile) : parentFile,
-  );
-  const rootDir = resolve(parentDir, options?.root ?? ".");
+  const rootDir = resolve(options?.root ?? process.cwd());
   const encoding = options?.encoding ?? "utf-8";
   const parsed = await Promise.all(
     files.map((file) => {
@@ -98,8 +92,8 @@ export async function loadEnv(environment, options) {
 
   if (options?.schema) {
     // Transpile the schema file into ESM code
-    const schemaFile = resolve(parentDir, options?.schema);
-    const { packageJson } = await readPackageUp({ cwd: parentDir });
+    const schemaFile = resolve(process.cwd(), options.schema);
+    const { packageJson } = await readPackageUp({ cwd: process.cwd() });
     const {
       outputFiles: [{ text: contents }],
     } = await build({
@@ -118,7 +112,7 @@ export async function loadEnv(environment, options) {
 
     // Import env schema
     const envObj = await importFromString(contents, {
-      dirname: parentDir,
+      dirname: process.cwd(),
       filename: schemaFile,
       useCurrentGlobal: true,
     }).then((module) => module.env ?? module.default);

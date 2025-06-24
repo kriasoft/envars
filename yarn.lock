@@ -1189,7 +1189,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"callsites@npm:^4.1.0, callsites@npm:^4.2.0":
+"callsites@npm:^4.2.0":
   version: 4.2.0
   resolution: "callsites@npm:4.2.0"
   checksum: 10/9a740675712076a38208967d7f80b525c9c7f4524c2af5d3936c5e278a601af0423a07e91f79679fec0546f3a52514d56969c6fe65f84d794e64a36b1f5eda8a
@@ -1518,7 +1518,6 @@ __metadata:
     eslint-config-prettier: "npm:^9.1.0"
     globals: "npm:^15.14.0"
     module-from-string: "npm:^3.3.1"
-    parent-module: "npm:^3.1.0"
     prettier: "npm:^3.4.2"
     read-pkg-up: "npm:^11.0.0"
     typescript: "npm:^5.7.2"
@@ -2834,15 +2833,6 @@ __metadata:
   dependencies:
     callsites: "npm:^3.0.0"
   checksum: 10/6ba8b255145cae9470cf5551eb74be2d22281587af787a2626683a6c20fbb464978784661478dd2a3f1dad74d1e802d403e1b03c1a31fab310259eec8ac560ff
-  languageName: node
-  linkType: hard
-
-"parent-module@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "parent-module@npm:3.1.0"
-  dependencies:
-    callsites: "npm:^4.1.0"
-  checksum: 10/8c089b0077b45f13f17acaa9e4fca34d76c6eba3c628778b54a8caf6bdafeb63fbce2f082063841df279cad427e3ac9a202f69dbf56d68bb9e17473268dbd10c
   languageName: node
   linkType: hard
 
