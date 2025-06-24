@@ -108,6 +108,7 @@ export async function loadEnv(environment, options) {
       bundle: true,
       write: false,
       format: "esm",
+      platform: "node",
       external: Object.keys(packageJson.dependencies ?? {}).concat(
         Object.keys(packageJson.devDependencies ?? {}),
       ),

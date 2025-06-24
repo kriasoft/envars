@@ -6,5 +6,6 @@
 .pnp.*
 .prettierignore
 .yarnrc.yml
+eslint.config.js
 env.ts
 test.js
