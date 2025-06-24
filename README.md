@@ -5,7 +5,22 @@
 [![Donate](https://img.shields.io/badge/dynamic/json?color=%23ff424d&label=Patreon&style=flat-square&query=data.attributes.patron_count&suffix=%20patrons&url=https%3A%2F%2Fwww.patreon.com%2Fapi%2Fcampaigns%2F233228)](http://patreon.com/koistya)
 [![Discord](https://img.shields.io/discord/643523529131950086?label=Chat&style=flat-square)](https://discord.gg/bSsv7XM)
 
-Loads environment variables for the target environment from `.env` files using [dotenv](https://github.com/motdotla/dotenv); supports cloud secret providers such as [Google Secret Manager](https://cloud.google.com/secret-manager).
+Loads environment variables for the target environment from `.env` files using [dotenv](https://github.com/motdotla/dotenv). Also supports cloud secret providers such as [Google Secret Manager](https://cloud.google.com/secret-manager), [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/), and (experimental) Azure Key Vault. Now you can keep your secrets secret, even from yourself.
+
+## Features
+
+- Loads `.env` files using Vite-style conventions
+- Supports secret references from Google, AWS, and Azure
+- TypeScript and monorepo friendly
+- Works with Vite, Node.js, and serverless deployments
+- Simple API, zero-config for most use cases
+
+## Why envars?
+
+- **Unified config**: Manage local and cloud secrets with a single API.
+- **Predictable**: Follows conventions from Vite and modern Node.js tooling.
+- **Flexible**: Works in monorepos, serverless, and traditional deployments.
+- **Type-safe**: Integrates with envalid, Zod, and other schema validators.
 
 By default it attempts to load `.env` files from the current working directory using the following naming convention ([learn more](https://vitejs.dev/guide/env-and-mode.html#env-files)):
 
@@ -18,19 +33,30 @@ By default it attempts to load `.env` files from the current working directory u
 
 Created and diligently upheld with the generous backing of these exceptional companies:
 
-<a href="https://reactstarter.com/s/1"><img src="https://reactstarter.com/s/1.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/s/2"><img src="https://reactstarter.com/s/2.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/s/3"><img src="https://reactstarter.com/s/3.png" height="60" /></a>
+[<img src="https://reactstarter.com/s/1.png" height="60" alt="Sponsor 1" />](https://reactstarter.com/s/1)
+&nbsp;&nbsp;[<img src="https://reactstarter.com/s/2.png" height="60" alt="Sponsor 2" />](https://reactstarter.com/s/2)
+&nbsp;&nbsp;[<img src="https://reactstarter.com/s/3.png" height="60" alt="Sponsor 3" />](https://reactstarter.com/s/3)
 
 ## How to Install
 
 ```bash
 # with NPM
-$ npm install envars --save-dev
+npm install envars --save-dev
 
 # with Yarn
-$ yarn add envars --dev
+yarn add envars --dev
 ```
 
-## Usage
+## Quick Start
+
+```js
+import { loadEnv } from "envars";
+
+const [env] = await loadEnv("development");
+console.log(env);
+```
+
+## Advanced Usage
 
 ```dotenv
 # .env
@@ -162,31 +188,45 @@ export default defineConfig(async ({ mode }) => {
 ### References
 
 - https://cloud.google.com/secret-manager/docs
+- https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html
+- https://learn.microsoft.com/en-us/azure/key-vault/secrets/
 
 ## Backers 💰
 
-<a href="https://reactstarter.com/b/1"><img src="https://reactstarter.com/b/1.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/2"><img src="https://reactstarter.com/b/2.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/3"><img src="https://reactstarter.com/b/3.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/4"><img src="https://reactstarter.com/b/4.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/5"><img src="https://reactstarter.com/b/5.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/6"><img src="https://reactstarter.com/b/6.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/7"><img src="https://reactstarter.com/b/7.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/8"><img src="https://reactstarter.com/b/8.png" height="60" /></a>
+[<img src="https://reactstarter.com/b/1.png" height="60" alt="Backer 1" />](https://reactstarter.com/b/1)
+&nbsp;&nbsp;[<img src="https://reactstarter.com/b/2.png" height="60" alt="Backer 2" />](https://reactstarter.com/b/2)
+&nbsp;&nbsp;[<img src="https://reactstarter.com/b/3.png" height="60" alt="Backer 3" />](https://reactstarter.com/b/3)
+&nbsp;&nbsp;[<img src="https://reactstarter.com/b/4.png" height="60" alt="Backer 4" />](https://reactstarter.com/b/4)
+&nbsp;&nbsp;[<img src="https://reactstarter.com/b/5.png" height="60" alt="Backer 5" />](https://reactstarter.com/b/5)
+&nbsp;&nbsp;[<img src="https://reactstarter.com/b/6.png" height="60" alt="Backer 6" />](https://reactstarter.com/b/6)
+&nbsp;&nbsp;[<img src="https://reactstarter.com/b/7.png" height="60" alt="Backer 7" />](https://reactstarter.com/b/7)
+&nbsp;&nbsp;[<img src="https://reactstarter.com/b/8.png" height="60" alt="Backer 8" />](https://reactstarter.com/b/8)
 
 ## Related Projects
 
 - [React Starter Kit](https://github.com/kriasoft/react-starter-kit) — front-end boilerplate (TypeScript, React, Material UI, Vite)
 - [Full-stack Starter Kit](https://github.com/kriasoft/relay-starter-kit) — monorepo boilerplate (TypeScript, Vite, GraphQL.js, React, and Relay)
 
+## Community & Support
+
+- 💬 [Join our Discord](https://discord.gg/bSsv7XM) for questions, help, and discussion (or just to show off your best `.env` puns)
+- 🐞 [Report issues](https://github.com/kriasoft/envars/issues) or request features on GitHub
+- 🙏 [Sponsor development](https://github.com/sponsors/koistya) to support ongoing maintenance (we promise not to spend it all on coffee)
+
 ## How to Contribute
 
 Please [fork the repo](https://github.com/kriasoft/envars/fork), create a [PR](https://docs.github.com/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request), or send me a message on [Discord](https://discord.gg/bSsv7XM) (`@koistya`).
 
 ```bash
-$ git clone https://github.com/<username>/envars.git
-$ cd ./envars
-$ corepack enable
-$ yarn test
+git clone https://github.com/<username>/envars.git
+cd ./envars
+corepack enable
+yarn test
 ```
 
 ## License
 
-Copyright © 2021-present Kriasoft. This source code is licensed under the MIT license found in the
-[LICENSE](https://github.com/kriasoft/envars/blob/main/LICENSE) file.
+Copyright © 2021-present Kriasoft. This source code is licensed under the [MIT license](https://github.com/kriasoft/envars/blob/main/LICENSE).
 
 ---
 

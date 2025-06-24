@@ -2,23 +2,36 @@
   "name": "envars",
   "version": "1.1.1",
   "packageManager": "yarn@4.9.2",
-  "description": "Load environment variables from .env files. Decode secret values from AWS Secrets Manager, Google Secret Manager, and other sources.",
+  "description": "Load environment variables from .env files and resolve secrets from AWS Secrets Manager, Google Secret Manager, and other providers.",
   "keywords": [
     ".env",
+    "12factor",
     "aws",
+    "cloud secrets",
     "cloud",
     "config",
+    "configuration",
+    "deployment",
+    "development",
     "dotenv",
     "env",
+    "envalid",
     "environment variables",
     "environment",
     "expand",
     "gcp",
     "google",
+    "monorepo",
+    "nodejs",
+    "production",
+    "runtime config",
     "secret manager",
     "secret",
     "secrets management",
     "secrets",
+    "secure",
+    "serverless",
+    "typescript",
     "variables",
     "vite"
   ],
@@ -78,12 +91,10 @@
   },
   "ava": {
     "workerThreads": false,
-    "watchMode": {
-      "ignoreChanges": [
-        ".env.*",
-        ".env",
-        "env.ts"
-      ]
-    }
+    "ignoredByWatcher": [
+      ".env.*",
+      ".env",
+      "env.ts"
+    ]
   }
 }
